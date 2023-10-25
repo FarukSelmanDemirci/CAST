@@ -48,7 +48,7 @@ fun MainScreen() {
         scaffoldState = scaffoldState,
         topBar = {
             TopAppBar(
-                title = { Text(text = "COST") },
+                title = { Text(text = "COST EUROPEAN COOPERATION IN SCIENCE AND TECHNOLOGY ") },
                 navigationIcon = {
                     IconButton(onClick = {
                         // Coroutine başlatma işlemi
@@ -71,17 +71,17 @@ fun MainScreen() {
 @Composable
 fun DrawerMenu() {
     Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
+        modifier = Modifier.fillMaxSize().background(Color.LightGray).padding(16.dp),
         verticalArrangement = Arrangement.SpaceBetween // Öğeleri başlangıç ve son noktalarına yerleştir
     ) {
         // Diğer menü öğeleri
         Column {
-            DrawerMenuItem(text = "Anasayfa", iconResId = R.drawable.anasayfa, onClick = { /* Tıklama işlemi */ })
-            DrawerMenuItem(text = "Hakkımızda", iconResId = R.drawable.hakkimizda, onClick = { /* Tıklama işlemi */ })
-            DrawerMenuItem(text = "Misyonumuz", iconResId = R.drawable.misyon, onClick = { /* Tıklama işlemi */ })
-            DrawerMenuItem(text = "İletişim", iconResId = R.drawable.iletisim, onClick = { /* Tıklama işlemi */ })
-            DrawerMenuItem(text = "Kaynaklar", iconResId = R.drawable.kaynak, onClick = { /* Tıklama işlemi */ })
-            DrawerMenuItem(text = "Duyurular", iconResId = R.drawable.duyurular, onClick = { /* Tıklama işlemi */ })
+            DrawerMenuItem(text = "Home", iconResId = R.drawable.anasayfa, onClick = { /* Tıklama işlemi */ })
+            DrawerMenuItem(text = "About", iconResId = R.drawable.hakkimizda, onClick = { /* Tıklama işlemi */ })
+            DrawerMenuItem(text = "Our Mission", iconResId = R.drawable.misyon, onClick = { /* Tıklama işlemi */ })
+            DrawerMenuItem(text = "Communications", iconResId = R.drawable.iletisim, onClick = { /* Tıklama işlemi */ })
+            DrawerMenuItem(text = "Resources", iconResId = R.drawable.kaynak, onClick = { /* Tıklama işlemi */ })
+            DrawerMenuItem(text = "Announcements", iconResId = R.drawable.duyurular, onClick = { /* Tıklama işlemi */ })
         }
 
         // Kullanıcı girişi için tuş
@@ -92,7 +92,7 @@ fun DrawerMenu() {
                 .background(Color.Blue) // Aynı arka plan rengi
                 .clickable(onClick = { /* Kullanıcı girişi işlemi */ }),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start // Bu kısmı güncelledik
+            horizontalArrangement = Arrangement.Start
         ) {
             // Vector asset'i eklediğimiz kısım
             Image(
@@ -100,7 +100,7 @@ fun DrawerMenu() {
                 contentDescription = null,
                 modifier = Modifier.size(24.dp).padding(end = 16.dp) // Icon ile metin arasında boşluk ekledik
             )
-            Text(text = "Kullanıcı Girişi", color = Color.White)
+            Text(text = "User Login", color = Color.White)
         }
     }
 }
@@ -136,11 +136,13 @@ fun ContentScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(color = Color.LightGray)
             .padding(16.dp),
+
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(painter = painterResource(id = R.drawable.your_image), contentDescription = null)
+        Image(painter = painterResource(id = R.drawable.your_image), contentDescription = null, modifier = Modifier.fillMaxWidth())
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -150,7 +152,7 @@ fun ContentScreen() {
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(onClick = { /* Tıklama işlemleri */ }) {
-            Text(text = "Daha fazlası")
+            Text(text = "Learn More")
         }
     }
 }
