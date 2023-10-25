@@ -9,6 +9,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.DrawerValue
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -24,7 +25,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
@@ -89,7 +92,8 @@ fun DrawerMenu() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .background(Color.Blue) // Aynı arka plan rengi
+                .clip(CircleShape)
+                .background(Color(0xFF6200EE)) // Aynı arka plan rengi
                 .clickable(onClick = { /* Kullanıcı girişi işlemi */ }),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start
@@ -98,7 +102,7 @@ fun DrawerMenu() {
             Image(
                 painter = painterResource(id = R.drawable.kullanicigiris),
                 contentDescription = null,
-                modifier = Modifier.size(24.dp).padding(end = 16.dp) // Icon ile metin arasında boşluk ekledik
+                modifier = Modifier.size(24.dp).padding(end = 16.dp)// Icon ile metin arasında boşluk ekledik
             )
             Text(text = "User Login", color = Color.White)
         }
@@ -111,7 +115,8 @@ fun DrawerMenuItem(text: String, iconResId: Int, onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .background(Color.Blue) // Burada arka plan rengini mavi olarak ayarladık
+            .clip(CircleShape)
+            .background(Color(0xFF6200EE)) // Burada arka plan rengini mavi olarak ayarladık
             .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
@@ -142,7 +147,12 @@ fun ContentScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(painter = painterResource(id = R.drawable.your_image), contentDescription = null, modifier = Modifier.fillMaxWidth())
+        Image(
+            painter = painterResource(id = R.drawable.your_image),
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth(),
+            contentScale = ContentScale.Crop // Resmin merkezini ayarlamak için ekledim.
+            )
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -152,7 +162,7 @@ fun ContentScreen() {
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(onClick = { /* Tıklama işlemleri */ }) {
-            Text(text = "Learn More")
+            Text(text = "Learn More", color = Color.White)
         }
     }
 }
